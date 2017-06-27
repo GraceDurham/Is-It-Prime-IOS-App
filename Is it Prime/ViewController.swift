@@ -18,24 +18,50 @@ class ViewController: UIViewController {
     
     @IBAction func isPrimeButton(_ sender: Any) {
         
-        let number = Int(numTextField.text!)
+        if let userEnteredString = numTextField.text{
         
-        func isItPrime(number:Int) -> Bool{
-            var i = 2
+            let userEnteredInteger = Int(userEnteredString)
             
-            while i < number{
-                if (number % i) == 0{
+            if let number = userEnteredInteger{
+                
+                var isPrime = true
+                
+                if number == 1{
+                
+                    isPrime = false
+                
+                }
+                var i = 2
+                
+                while i < number{
+                    if (number % i) == 0{
+                        
+                        isPrime = false
+                    
+                    
+                    }
+                    
+                    i = i + 1
+                }
+                
+                if isPrime{
+                    
+                    numLabel.text = "\(number) is Prime!"
+                    
+                }else{
                     
                     numLabel.text = "\(number) is not Prime"
-                    return false
                 }
-                i = i + 1
+        
+            }else{
+                    numLabel.text = "Please enter a positive whole number"
+            
+            
             }
-            numLabel.text =   "\(number) is Prime"
-            return true
+            
         }
-        print(isItPrime(number: number!))
-
+        
+    
     }
     
     
